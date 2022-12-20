@@ -3,5 +3,8 @@
 # Make sure the required directory structure does exist
 mkdir -p main/src
 
+# Remove possibly existing files
+rm -R main/src/$1
+
 # Clone the provided feature
 cp -R features/src/$1 main/src/
