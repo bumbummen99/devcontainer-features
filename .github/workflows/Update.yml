@@ -75,7 +75,7 @@ jobs:
 
     - name: Check
       run: |
-        echg "CWD is $(pwd)"
+        echo "CWD is $(pwd)"
         ls -l
 
     - name: "Publish Features"
