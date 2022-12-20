@@ -9,29 +9,23 @@ jobs:
   php:
     runs-on: ubuntu-latest
     steps:
-    - name: Pull repository
+    - name: Checkout
       uses: actions/checkout@v3
       with:
-        path: devcontainer-features
-      
-    - name: Pull offical features
+        path: main
+
+    - name: Checkout devcontainers/features
       uses: actions/checkout@v3
       with:
-        name: devcontainers/features
+        repository: devcontainers/features
         path: features
       
-    - name: Update php feature
+    - name: Check
       run:  |
         echo "Root contents:"
         ls -l
         echo "Offical contents:"
-        cd features
-        ls -l 
+        ls -l main
         echo "Custom contents:"
-        cd ../devcontainer-features
-        ls -l
+        ls -l devcontainer-features
         echo "Updating..."
-        cp -r offical/src/php custom/
-           
-    - name: Check
-      run: ls -l custom/
