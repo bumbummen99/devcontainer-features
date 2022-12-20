@@ -43,6 +43,7 @@ jobs:
     - name: Check
       run: |
         cat main/src/php/devcontainer-feature.json
+        pwd
 
 #    - name: Commit
 #      run: |
