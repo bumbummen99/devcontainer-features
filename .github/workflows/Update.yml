@@ -20,12 +20,22 @@ jobs:
         repository: devcontainers/features
         path: features
       
-    - name: Check
+    - name: Update
       run:  |
-        echo "Root contents:"
-        ls -l
-        echo "Offical contents:"
-        ls -l main
-        echo "Custom contents:"
-        ls -l features
-        echo "Updating..."
+        cp -R features/src/php main/
+
+    - name: Check
+      run: ls -l main
+
+    - name: Commit
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add .
+        git commit -a -m "Automated update"
+           
+    - name: Push
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
