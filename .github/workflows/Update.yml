@@ -22,12 +22,12 @@ jobs:
       
     - name: Update
       run: |
-        echo "$(pwd)/main/.github/bin" >> $GITHUB_PATH
+        echo "$(pwd)/main/.github/bin" >> $PATH
         sync-feature php
 
     - name: Modify
       run: |
-        echo "$(pwd)/main/.github/bin" >> $GITHUB_PATH
+        echo "$(pwd)/main/.github/bin" >> $PATH
         cd main/src/php
         remove-extension "devsense.phptools-vscode"
         remove-extension "xdebug.php-pack"
