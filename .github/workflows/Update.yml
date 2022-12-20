@@ -12,23 +12,23 @@ jobs:
     - name: Pull repository
       uses: actions/checkout@v3
       with:
-        path: custom
+        path: devcontainer-features
       
     - name: Pull offical features
       uses: actions/checkout@v3
       with:
         name: devcontainers/features
-        path: offical
+        path: features
       
     - name: Update php feature
       run:  |
         echo "Root contents:"
         ls -l
         echo "Offical contents:"
-        cd offical
+        cd features
         ls -l 
         echo "Custom contents:"
-        cd ../custom
+        cd ../devcontainer-features
         ls -l
         echo "Updating..."
         cp -r offical/src/php custom/
