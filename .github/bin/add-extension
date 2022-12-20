@@ -2,4 +2,4 @@
 jq -c ".customizations.vscode.extensions |= .+ [\"$1\"]" devcontainer-feature.json > tmp.$$.json && mv tmp.$$.json devcontainer-feature.json
 
 # Pretty print
-jq . evcontainer-feature.json
+jq . devcontainer-feature.json
