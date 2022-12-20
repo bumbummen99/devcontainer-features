@@ -24,8 +24,16 @@ jobs:
       run:  |
         cp -R features/src/php main/
 
+    - name: Modify
+      run: |
+        cd main/src/php
+        ../../.github/remove-extension.sh "devsense.phptools-vscode"
+        ../../.github/remove-extension.sh "xdebug.php-pack"
+        ../../.github/add-extension.sh "devsense.phptools-vscode"
+
     - name: Check
-      run: ls -l main
+      run: |
+        cat main/src/php/devcontainer-feature.json
 
     - name: Commit
       run: |
