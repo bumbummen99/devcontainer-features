@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Make sure the required directory structure does exist
+mkdir -p main/src
+
+# Clone the provided feature
+cp -R features/src/$1 main/src/
