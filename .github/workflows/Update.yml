@@ -27,5 +27,5 @@ jobs:
         echo "Offical contents:"
         ls -l main
         echo "Custom contents:"
-        ls -l devcontainer-features
+        ls -l features
         echo "Updating..."
