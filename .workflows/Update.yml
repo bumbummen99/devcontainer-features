@@ -1,0 +1,25 @@
+name: Update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  php:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Pull repository
+      uses: actions/checkout@v1
+      
+    - name: Pull offical features
+      uses: actions/checkout@master
+      with:
+        name: devcontainers/features
+        ref: refs/heads/main
+      
+    - name: Update php feature
+      run: cp -r ../../devcontainers/features/src/php ./
+           
+    - name: Check
+      run: ls -l
