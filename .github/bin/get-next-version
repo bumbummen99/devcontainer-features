@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# This script has been adapted from:
+# https://github.com/unegma/bash-functions/blob/main/update.sh
+#
 
 CURRENT_VERSION="$1"
 VERSION="$2"
