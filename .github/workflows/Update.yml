@@ -45,13 +45,13 @@ jobs:
         cat main/src/php/devcontainer-feature.json
         pwd
 
-#    - name: Commit
-#      run: |
-#        cd main
-#        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-#        git config --local user.name "github-actions[bot]"
-#        git add .
-#        git commit -a -m "Automated update"
+    - name: Commit
+      run: |
+        cd main
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add .
+        git commit -a -m "Automated update"
 #
 #    - name: Tag
 #      run: |
@@ -59,13 +59,20 @@ jobs:
 #        cd main/src/php
 #        git tag $(jq -r '.version' devcontainer-feature.json)
 #           
-#    - name: Push
-#      uses: ad-m/github-push-action@master
-#      with:
-#        github_token: ${{ secrets.GITHUB_TOKEN }}
-#        branch: ${{ github.ref }}
-#        directory: main
-#        tags: true
+    - name: Push
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
+        directory: main
+        tags: true
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: [php]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
 
     - name: "Publish Features"
       uses: devcontainers/action@v1
@@ -76,3 +83,4 @@ jobs:
         
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
