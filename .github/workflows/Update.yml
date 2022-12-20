@@ -33,6 +33,13 @@ jobs:
         remove-extension "xdebug.php-pack"
         add-extension    "devsense.phptools-vscode"
 
+    - name: Increment version
+      run: |
+        export PATH=$PATH:$(pwd)/main/.github/bin  
+        export VERSION="$(tag-next-version $(jq -r '.version' devcontainer-feature.json) patch)"
+        cd main/src/php
+        set-version "$VERSION"
+
     - name: Check
       run: |
         cat main/src/php/devcontainer-feature.json
@@ -49,7 +56,7 @@ jobs:
       run: |
         export PATH=$PATH:$(pwd)/main/.github/bin
         cd main/src/php
-        tag-next-version $(jq -r '.version' devcontainer-feature.json) patch
+        git tag $(jq -r '.version' devcontainer-feature.json)
            
     - name: Push
       uses: ad-m/github-push-action@master

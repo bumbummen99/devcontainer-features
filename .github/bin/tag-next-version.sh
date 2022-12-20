@@ -46,10 +46,9 @@ NEEDS_TAG=`git describe --contains $GIT_COMMIT 2>/dev/null`
 #only tag if no tag already
 #to publish, need to be logged in to npm, and with clean working directory: `npm login; git stash`
 if [ -z "$NEEDS_TAG" ]; then
-  git tag $NEW_TAG
-  echo "Tagged with $NEW_TAG"
+  echo "$NEW_TAG"
+  exit 0
 else
   echo "Already a tag on this commit"
+  exit 1
 fi
-
-exit 0

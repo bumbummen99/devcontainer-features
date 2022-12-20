@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Create a temporary file
+TMP=$(mktemp)
+
+# Perform the change, pretty print and write to tmp
+jq -c ".version = \"$1\"" devcontainer-feature.json | \
+jq '.' \
+> $TMP
+
+# Update from temporary file
+mv $TMP devcontainer-feature.json
