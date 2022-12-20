@@ -71,7 +71,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [php]
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
 
     - name: Check
       uses: |
