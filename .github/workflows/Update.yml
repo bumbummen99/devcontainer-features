@@ -6,8 +6,10 @@ on:
     - cron: "0 * * * *"
 
 jobs:
-  php:
+  update:
     runs-on: ubuntu-latest
+    outputs:
+      updated_ref: ${{ steps.commit.outputs.updated_ref }}
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -55,7 +57,7 @@ jobs:
         git commit -a -m "Automated update"
         UPDATED_REF=$(git rev-parse --verify HEAD)
         echo "New Ref: $UPDATED_REF"
-        echo "UPDATED_REF=$UPDATED_REF" >> $GITHUB_OUTPUT
+        echo "updated_ref=$UPDATED_REF" >> $GITHUB_OUTPUT
 #
 #    - name: Tag
 #      run: |
@@ -73,11 +75,11 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
-    needs: [php]
+    needs: [update]
     steps:
     - uses: actions/checkout@v3
       with:
-        ref: ${{ steps.commit.outputs.UPDATED_REF }}"
+        ref: ${{needs.update.outputs.updated_ref}}
 
     - name: Check
       run: |
