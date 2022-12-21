@@ -46,12 +46,14 @@ jobs:
         pwd
 
     - name: Commit
+      id: commit
       run: |
         cd main
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add .
         git commit -a -m "Automated update"
+        echo "UPDATED_REF=$(git rev-parse --verify HEAD)" >> $GITHUB_OUTPUT
 #
 #    - name: Tag
 #      run: |
@@ -72,6 +74,8 @@ jobs:
     needs: [php]
     steps:
     - uses: actions/checkout@v3
+      with:
+        ref: ${{ steps.commit.outputs.UPDATED_REF }}"
 
     - name: Check
       run: |
