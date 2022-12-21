@@ -76,7 +76,7 @@ jobs:
     - name: Check
       run: |
         echo "CWD is $(pwd)"
-        ls -l
+        ls -la
 
 #    - name: "Publish Features"
 #      uses: devcontainers/action@v1
