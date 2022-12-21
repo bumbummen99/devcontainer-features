@@ -53,8 +53,9 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git add .
         git commit -a -m "Automated update"
-        echo "UPDATED_REF=$(git rev-parse --verify HEAD)" >> $GITHUB_OUTPUT
-        echo "Job Output: $GITHUB_OUTPUT"
+        UPDATED_REF=$(git rev-parse --verify HEAD)
+        echo "New Ref: $UPDATED_REF"
+        echo "UPDATED_REF=$UPDATED_REF" >> $GITHUB_OUTPUT
 #
 #    - name: Tag
 #      run: |
