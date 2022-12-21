@@ -54,6 +54,7 @@ jobs:
         git add .
         git commit -a -m "Automated update"
         echo "UPDATED_REF=$(git rev-parse --verify HEAD)" >> $GITHUB_OUTPUT
+        echo "Job Output: $GITHUB_OUTPUT"
 #
 #    - name: Tag
 #      run: |
