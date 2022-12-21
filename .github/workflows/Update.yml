@@ -80,7 +80,7 @@ jobs:
     - name: Check
       run: |
         echo "CWD is $(pwd)"
-        ls -las
+        ls -la
 
 #    - name: "Publish Features"
 #      uses: devcontainers/action@v1
