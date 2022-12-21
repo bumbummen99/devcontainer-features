@@ -78,13 +78,13 @@ jobs:
         echo "CWD is $(pwd)"
         ls -l
 
-    - name: "Publish Features"
-      uses: devcontainers/action@v1
-      with:
-        publish-features: "true"
-        base-path-to-features: "src"
-        generate-docs: "true"
-        
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#    - name: "Publish Features"
+#      uses: devcontainers/action@v1
+#      with:
+#        publish-features: "true"
+#        base-path-to-features: "src"
+#        generate-docs: "true"
+#        
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
